@@ -1,0 +1,40 @@
+{
+  "name": "studio-launcher",
+  "version": "2.0.0",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder --publish never",
+    "manifest": "node tools/build-manifest.js"
+  },
+  "dependencies": {
+    "minecraft-launcher-core": "^3.18.1",
+    "electron-updater": "^6.3.0"
+  },
+  "devDependencies": {
+    "electron": "^31.0.0",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "appId": "com.tuestudio.launcher",
+    "productName": "Studio Launcher",
+    "win": {
+      "target": "nsis"
+    },
+    "files": [
+      "**/*",
+      "!files/**",
+      "!tools/**"
+    ],
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "Julian7789",
+        "repo": "PROYECT-DREAM---Launcher"
+      }
+    ],
+    "nsis": {
+      "artifactName": "StudioLauncher-Setup-${version}.${ext}"
+    }
+  }
+}

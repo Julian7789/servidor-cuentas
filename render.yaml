@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: cuentas-launcher
+    runtime: node
+    plan: starter
+    buildCommand: npm install
+    startCommand: node server.js
+    healthCheckPath: /api/news
+    disk:
+      name: datos
+      mountPath: /data
+      sizeGB: 1
+    envVars:
+      - key: DATA_DIR
+        value: /data
+      - key: STUDIO_NAME
+        sync: false
+      - key: PUBLIC_URL
+        sync: false
+      - key: ADMIN_KEY
+        generateValue: true
+      - key: RESEND_API_KEY
+        sync: false
+      - key: MAIL_FROM
+        sync: false
